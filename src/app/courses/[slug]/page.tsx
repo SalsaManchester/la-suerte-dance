@@ -66,7 +66,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                       {course.lessons_count} lessons
                     </span>
                   </h2>
-                  <CourseCurriculum modules={course.modules} isPremium={course.is_premium} />
+                  <CourseCurriculum modules={course.modules} isPremium={course.is_premium} courseSlug={slug} />
                 </div>
               </div>
 

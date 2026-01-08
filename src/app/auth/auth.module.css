@@ -1,0 +1,322 @@
+.authPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  position: relative;
+  overflow: hidden;
+  background: var(--background);
+}
+
+/* Background Effects */
+.authBackground {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb1, .orb2, .orb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+}
+
+.orb1 {
+  width: 500px;
+  height: 500px;
+  background: var(--primary);
+  top: -200px;
+  right: -100px;
+  animation: float 20s ease-in-out infinite;
+}
+
+.orb2 {
+  width: 400px;
+  height: 400px;
+  background: var(--secondary);
+  bottom: -150px;
+  left: -100px;
+  animation: float 25s ease-in-out infinite reverse;
+}
+
+.orb3 {
+  width: 300px;
+  height: 300px;
+  background: var(--tertiary);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 15s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -30px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Container */
+.authContainer {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  margin-bottom: var(--space-8);
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logoSubtext {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--foreground-muted);
+  margin-top: 2px;
+}
+
+/* Card */
+.authCard {
+  background: var(--background);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.authTitle {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: var(--space-2);
+}
+
+.authSubtitle {
+  font-size: var(--text-base);
+  color: var(--foreground-muted);
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+/* Form */
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.formLabel {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.formInput {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  border: 2px solid #E5E7EB;
+  border-radius: var(--radius-lg);
+  background: var(--background);
+  color: var(--foreground);
+  transition: all 0.2s ease;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 27, 107, 0.1);
+}
+
+.formInput::placeholder {
+  color: #9CA3AF;
+}
+
+/* Submit Button */
+.submitButton {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  margin-top: var(--space-2);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, var(--primary) 0%, #FF5C8D 100%);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 27, 107, 0.3);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Links */
+.forgotLink {
+  text-align: right;
+  margin-top: calc(-1 * var(--space-2));
+}
+
+.forgotLink a {
+  font-size: var(--text-sm);
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.forgotLink a:hover {
+  text-decoration: underline;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #E5E7EB;
+}
+
+.divider span {
+  font-size: var(--text-sm);
+  color: var(--foreground-muted);
+}
+
+/* Social Buttons */
+.socialButtons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.socialButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--foreground);
+  background: var(--background);
+  border: 2px solid #E5E7EB;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.socialButton:hover {
+  border-color: var(--foreground-muted);
+  background: var(--background-secondary);
+}
+
+/* Switch Auth */
+.switchAuth {
+  text-align: center;
+  margin-top: var(--space-6);
+  font-size: var(--text-base);
+  color: var(--foreground-muted);
+}
+
+.switchAuth a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.switchAuth a:hover {
+  text-decoration: underline;
+}
+
+/* Error/Success Messages */
+.message {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-4);
+}
+
+.errorMessage {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: 1px solid #FECACA;
+}
+
+.successMessage {
+  background: #D1FAE5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+}
+
+/* Footer */
+.footerText {
+  text-align: center;
+  margin-top: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--foreground-muted);
+}
+
+.footerText a {
+  color: var(--foreground);
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .authPage {
+    padding: var(--space-4);
+  }
+
+  .authCard {
+    padding: var(--space-6);
+  }
+
+  .authTitle {
+    font-size: var(--text-xl);
+  }
+}

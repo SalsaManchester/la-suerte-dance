@@ -1,15 +1,17 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { ModuleWithLessons } from '@/types/database';
 import styles from './CourseCurriculum.module.css';
 
 interface CourseCurriculumProps {
   modules: ModuleWithLessons[];
   isPremium: boolean;
+  courseSlug: string;
 }
 
-export default function CourseCurriculum({ modules, isPremium }: CourseCurriculumProps) {
+export default function CourseCurriculum({ modules, isPremium, courseSlug }: CourseCurriculumProps) {
   const [expandedModules, setExpandedModules] = useState<string[]>(
     modules.length > 0 ? [modules[0].id] : []
   );
@@ -76,11 +78,8 @@ export default function CourseCurriculum({ modules, isPremium }: CourseCurriculu
                 {module.lessons.map((lesson, lessonIndex) => {
                   const isLocked = isPremium && !lesson.is_free;
 
-                  return (
-                    <div
-                      key={lesson.id}
-                      className={`${styles.lesson} ${isLocked ? styles.locked : ''}`}
-                    >
+                  const lessonContent = (
+                    <>
                       <div className={styles.lessonNumber}>
                         {moduleIndex + 1}.{lessonIndex + 1}
                       </div>
@@ -128,7 +127,24 @@ export default function CourseCurriculum({ modules, isPremium }: CourseCurriculu
                           </div>
                         )}
                       </div>
+                    </>
+                  );
+
+                  return isLocked ? (
+                    <div
+                      key={lesson.id}
+                      className={`${styles.lesson} ${styles.locked}`}
+                    >
+                      {lessonContent}
                     </div>
+                  ) : (
+                    <Link
+                      key={lesson.id}
+                      href={`/courses/${courseSlug}/lesson/${lesson.id}`}
+                      className={styles.lesson}
+                    >
+                      {lessonContent}
+                    </Link>
                   );
                 })}
               </div>
