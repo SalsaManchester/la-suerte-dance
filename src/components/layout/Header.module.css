@@ -112,7 +112,10 @@
   font-weight: var(--font-medium);
   color: var(--color-dark-600);
   text-decoration: none;
+  background: transparent;
+  border: none;
   border-radius: var(--radius-lg);
+  cursor: pointer;
   transition: all var(--transition-base);
 }
 

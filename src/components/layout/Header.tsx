@@ -4,12 +4,22 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui';
+import AuthModal from '@/components/auth/AuthModal';
 import styles from './Header.module.css';
+
+type AuthMode = 'login' | 'signup' | 'forgot';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authModalMode, setAuthModalMode] = useState<AuthMode>('login');
   const { user, loading, signOut } = useAuth();
+
+  const openAuthModal = (mode: AuthMode) => {
+    setAuthModalMode(mode);
+    setIsAuthModalOpen(true);
+  };
 
   const handleSignOut = async () => {
     await signOut();
@@ -90,12 +100,12 @@ export default function Header() {
             </div>
           ) : (
             <>
-              <Link href="/auth/login" className={styles.loginLink}>
+              <button className={styles.loginLink} onClick={() => openAuthModal('login')}>
                 Log In
-              </Link>
-              <Link href="/auth/signup">
-                <Button size="sm">Start Dancing</Button>
-              </Link>
+              </button>
+              <Button size="sm" onClick={() => openAuthModal('signup')}>
+                Start Dancing
+              </Button>
             </>
           )}
         </div>
@@ -110,6 +120,12 @@ export default function Header() {
           <span></span>
         </button>
       </div>
+
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        initialMode={authModalMode}
+      />
     </header>
   );
 }
