@@ -1,0 +1,26 @@
+.main {
+  padding-top: var(--header-height);
+  min-height: 100vh;
+}
+
+.hero {
+  padding: var(--space-16) 0 var(--space-12);
+  text-align: center;
+  background: var(--background-secondary);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  margin-bottom: var(--space-4);
+}
+
+.subtitle {
+  font-size: var(--text-lg);
+  color: var(--foreground-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.library {
+  padding: var(--space-12) 0 var(--space-24);
+}

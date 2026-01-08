@@ -1,0 +1,193 @@
+.main {
+  padding-top: var(--header-height);
+  min-height: 100vh;
+}
+
+.content {
+  padding: var(--space-12) 0 var(--space-24);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* Main Content */
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.section {
+  background: var(--background);
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: var(--space-4);
+}
+
+.lessonCount {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--foreground-muted);
+  background: var(--background-secondary);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+.description {
+  font-size: var(--text-base);
+  color: var(--foreground-muted);
+  line-height: 1.8;
+}
+
+/* Sidebar */
+.sidebar {
+  position: relative;
+}
+
+.stickyCard {
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-6));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.instructorCard,
+.benefitsCard {
+  background: var(--background);
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.cardTitle {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: var(--space-4);
+}
+
+/* Instructor */
+.instructorInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.instructorAvatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xl);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.instructorName {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: var(--space-1);
+}
+
+.instructorSpecialty {
+  font-size: var(--text-sm);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.instructorBio {
+  font-size: var(--text-sm);
+  color: var(--foreground-muted);
+  line-height: 1.6;
+}
+
+/* Benefits */
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.benefitsList li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--foreground);
+  line-height: 1.5;
+}
+
+.benefitsList svg {
+  color: var(--success);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    order: -1;
+  }
+
+  .stickyCard {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .instructorCard,
+  .benefitsCard {
+    flex: 1 1 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: var(--space-8) 0 var(--space-16);
+  }
+
+  .section {
+    padding: var(--space-5);
+  }
+
+  .sectionTitle {
+    font-size: var(--text-lg);
+  }
+
+  .instructorCard,
+  .benefitsCard {
+    padding: var(--space-4);
+  }
+}

@@ -1,0 +1,205 @@
+.library {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--background);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.filterLabel {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--foreground-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.filterButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-4);
+  background: var(--background-secondary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--foreground-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterButton:hover {
+  background: var(--background);
+  border-color: var(--primary-light);
+  color: var(--foreground);
+}
+
+.filterButton.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+/* Level-specific active states */
+.filterButton[data-level].active {
+  background: var(--level-bg, var(--primary));
+  border-color: var(--level-color, var(--primary));
+  color: var(--level-color, white);
+}
+
+.filterEmoji {
+  font-size: 1rem;
+}
+
+.levelDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Results Info */
+.resultsInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.resultsCount {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.clearFilters {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--foreground-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearFilters:hover {
+  background: var(--background-secondary);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+}
+
+/* Empty State */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-4);
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: var(--space-4);
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: var(--space-2);
+}
+
+.emptyText {
+  font-size: var(--text-base);
+  color: var(--foreground-muted);
+  margin-bottom: var(--space-6);
+  max-width: 400px;
+}
+
+.resetButton {
+  padding: var(--space-3) var(--space-6);
+  background: var(--primary);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resetButton:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filters {
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .filterGroup {
+    width: 100%;
+  }
+
+  .filterButtons {
+    gap: var(--space-2);
+  }
+
+  .filterButton {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .filterButton {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-width: calc(50% - var(--space-1));
+  }
+}
